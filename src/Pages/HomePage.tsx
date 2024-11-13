@@ -1,5 +1,7 @@
+import Header from '../Components/UI/Header';
+
 export const HomePage = () => {
-    return ( <h1>MovieFlix</h1>
+    return ( <Header title='MovieFlix'/>
     )
 }
 export default HomePage
