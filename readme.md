@@ -1,50 +1,136 @@
-# React + TypeScript + Vite
+# MovieFlix
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, responsive React application for browsing movies and TV shows using The Movie Database (TMDB) API. Built with TypeScript and Vite.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Browse Movies & TV Shows**: Discover popular movies and TV shows with detailed information.
+- **Pagination**: Load more content seamlessly with "Load More" buttons.
+- **Collection Translations**: View movie collections with translations in multiple languages.
+- **Responsive Design**: Optimized for desktop and mobile devices.
+- **Real API Integration**: Uses TMDB API v3 with Bearer authentication for live data.
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- **Frontend**: React 18, TypeScript
+- **Build Tool**: Vite
+- **API Client**: Axios
+- **Mocking**: MSW (Mock Service Worker) for development
+- **Styling**: CSS Modules
+- **Routing**: React Router
+- **Testing**: Vitest
 
-- Configure the top-level `parserOptions` property like this:
+## Prerequisites
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+- Node.js (v18 or higher)
+- npm or yarn
+
+## Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-username/MovieFlix-React.git
+   cd MovieFlix-React-main
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Set up environment variables:
+   Create a `.env` file in the root directory and add your TMDB API credentials:
+   ```env
+   VITE_API_KEY=your_tmdb_api_key_here
+   VITE_BASE_URL=https://api.themoviedb.org/3
+   VITE_ACCESS_TOKEN=your_tmdb_access_token_here
+   ```
+   - Get your API key and access token from [TMDB API](https://www.themoviedb.org/settings/api).
+
+4. Start the development server:
+   ```bash
+   npm run dev
+   ```
+   The app will run on `http://localhost:3003`.
+
+## Usage
+
+- Navigate to the Movies or TV Shows pages to browse content.
+- Click on a movie or show to view details, including collection information and translations.
+- Use the "Load More" button to fetch additional items.
+
+## Project Structure
+
+```
+src/
+├── Components/
+│   ├── UI/
+│   │   ├── Card.tsx
+│   │   ├── Image.tsx
+│   │   ├── ImageLink.tsx
+│   │   ├── Navbar.tsx
+│   │   └── navbar.module.css
+│   ├── Item.tsx
+│   └── ItemsList.tsx
+├── Layouts/
+│   └── MainLayout.tsx
+├── Mocks/
+│   ├── handlers.ts
+│   └── server.ts
+├── Models/
+│   ├── IMovie.ts
+│   └── IShow.ts
+├── Pages/
+│   ├── HomePage.tsx
+│   ├── MoviePage.tsx
+│   ├── MoviesPage.tsx
+│   ├── TVShowPage.tsx
+│   └── TVShowsPage.tsx
+├── Utilities/
+│   ├── FindCollectionTranslations.ts
+│   ├── FindMovie.ts
+│   ├── LoadMovies.ts
+│   └── LoadShows.ts
+├── App.tsx
+├── index.css
+└── main.tsx
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## API Integration
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+This app integrates with TMDB API v3. Endpoints used:
+- `/discover/movie` and `/discover/tv` for listings
+- `/movie/{id}` and `/tv/{id}` for details
+- `/collection/{id}/translations` for collection translations
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+Authentication uses Bearer token for secure API access.
+
+## Testing
+
+Run tests with:
+```bash
+npm run test
 ```
+
+## Build for Production
+
+```bash
+npm run build
+```
+
+## Contributing
+
+1. Fork the repository.
+2. Create a feature branch.
+3. Make your changes.
+4. Run tests and ensure everything works.
+5. Submit a pull request.
+
+## License
+
+This project is licensed under the MIT License.
+
+## Acknowledgments
+
+- [The Movie Database (TMDB)](https://www.themoviedb.org/) for providing the API.
+- Icons and images sourced from TMDB.
