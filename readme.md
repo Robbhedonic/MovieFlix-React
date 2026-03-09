@@ -118,6 +118,32 @@ npm run test
 npm run build
 ```
 
+## Deployment
+
+This project is configured for deployment on Vercel.
+
+1. Install Vercel CLI:
+   ```bash
+   npm install -g vercel
+   ```
+
+2. Login to Vercel:
+   ```bash
+   vercel login
+   ```
+
+3. Deploy to production:
+   ```bash
+   vercel --prod
+   ```
+
+4. Set environment variables in Vercel dashboard:
+   - `VITE_API_KEY`
+   - `VITE_BASE_URL`
+   - `VITE_ACCESS_TOKEN`
+
+   Get these from [TMDB API](https://www.themoviedb.org/settings/api).
+
 ## Contributing
 
 1. Fork the repository.
