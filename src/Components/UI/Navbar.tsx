@@ -32,14 +32,52 @@ const Navbar = () => {
             </li>
             <li id='orders' className={styles.menuItem}>
               <NavLink className={activeClass} to='/shows'>
-                {t('shows')}
+                {t('tvShows')}
               </NavLink>
             </li>
             <li className={styles.languageSelector}>
-              <select value={language} onChange={(e) => setLanguage(e.target.value as 'en-US' | 'es-ES' | 'sv-SE')}>
-                <option value="en-US">English</option>
-                <option value="es-ES">Español</option>
-                <option value="sv-SE">Svenska</option>
+              <select value={language} onChange={(e) => setLanguage(e.target.value)}>
+                <option value="ar-AE">العربية (Arabic)</option>
+                <option value="bg-BG">български език (Bulgarian)</option>
+                <option value="ca-ES">Català (Catalan)</option>
+                <option value="cs-CZ">Český (Czech)</option>
+                <option value="da-DK">Dansk (Danish)</option>
+                <option value="de-DE">Deutsch (German)</option>
+                <option value="el-GR">ελληνικά (Greek)</option>
+                <option value="en-US">English (English)</option>
+                <option value="es-ES">Español (Spanish)</option>
+                <option value="es-MX">Español (Spanish)</option>
+                <option value="fa-IR">فارسی (Persian)</option>
+                <option value="fi-FI">suomi (Finnish)</option>
+                <option value="fr-CA">Français (French)</option>
+                <option value="fr-FR">Français (French)</option>
+                <option value="he-IL">עִבְרִית (Hebrew)</option>
+                <option value="hr-HR">Hrvatski (Croatian)</option>
+                <option value="hu-HU">Magyar (Hungarian)</option>
+                <option value="id-ID">Bahasa indonesia (Indonesian)</option>
+                <option value="it-IT">Italiano (Italian)</option>
+                <option value="ja-JP">日本語 (Japanese)</option>
+                <option value="ka-GE">ქართული (Georgian)</option>
+                <option value="ko-KR">한국어/조선말 (Korean)</option>
+                <option value="lt-LT">Lietuvių (Lithuanian)</option>
+                <option value="nb-NO">Bokmål (Norwegian Bokmål)</option>
+                <option value="nl-NL">Nederlands (Dutch)</option>
+                <option value="no-NO">Norsk (Norwegian)</option>
+                <option value="pl-PL">Polski (Polish)</option>
+                <option value="pt-BR">Português (Portuguese)</option>
+                <option value="pt-PT">Português (Portuguese)</option>
+                <option value="ro-RO">Română (Romanian)</option>
+                <option value="ru-RU">Pусский (Russian)</option>
+                <option value="sk-SK">Slovenčina (Slovak)</option>
+                <option value="sr-RS">Srpski (Serbian)</option>
+                <option value="sv-SE">svenska (Swedish)</option>
+                <option value="th-TH">ภาษาไทย (Thai)</option>
+                <option value="tr-TR">Türkçe (Turkish)</option>
+                <option value="uk-UA">Український (Ukrainian)</option>
+                <option value="vi-VN">Tiếng Việt (Vietnamese)</option>
+                <option value="zh-CN">普通话 (Mandarin)</option>
+                <option value="zh-HK">普通话 (Mandarin)</option>
+                <option value="zh-TW">普通话 (Mandarin)</option>
               </select>
             </li>
           </ul>

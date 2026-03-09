@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { IMovie } from '../Models/IMovie';
 
-export const LoadMovies = async (endpoint: string, page: number = 1, language: string = 'en-US'): Promise<IMovie[]> => {
+export const LoadMovies = async (endpoint: string, page: number = 1, language: string = 'sv-SE'): Promise<IMovie[]> => {
   try {
     const key = import.meta.env.VITE_API_KEY;
     const baseUrl = import.meta.env.VITE_BASE_URL;
@@ -9,7 +9,7 @@ export const LoadMovies = async (endpoint: string, page: number = 1, language: s
     const url = `${baseUrl}${endpoint}`;
     console.log(url);
 
-    console.log(key, baseUrl, language);
+    console.log(key, baseUrl);
     const result = await axios.get(url, {
       params: {
         api_key: key,

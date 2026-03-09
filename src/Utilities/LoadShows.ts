@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { IShow } from '../Models/IShow';
 
-export const LoadShows = async (endpoint: string, page: number = 1, language: string = 'en-US'): Promise<IShow[]> => {
+export const LoadShows = async (endpoint: string, page: number = 1, language: string = 'sv-SE'): Promise<IShow[]> => {
   try {
     const key = import.meta.env.VITE_API_KEY;
     const baseUrl = import.meta.env.VITE_BASE_URL;
@@ -9,7 +9,7 @@ export const LoadShows = async (endpoint: string, page: number = 1, language: st
     const url = `${baseUrl}${endpoint}`;
     console.log(url);
 
-    console.log(key, baseUrl, language);
+    console.log(key, baseUrl);
     const result = await axios.get(url, {
       params: {
         api_key: key,

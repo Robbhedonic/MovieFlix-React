@@ -5,10 +5,10 @@ import ItemsList from '../Components/ItemsList';
 import { useLanguage } from '../Contexts/LanguageContext';
 
 export const TVShowsPage = () => {
+  const { language, t } = useLanguage();
   const [shows, setShows] = useState<IShow[]>([]);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
-  const { language, t } = useLanguage();
 
   useEffect(() => {
     loadMovies();

@@ -13,4 +13,10 @@ export interface IMovie {
   video: boolean;
   vote_average: number;
   vote_count: number;
+  belongs_to_collection?: {
+    id: number;
+    name: string;
+    poster_path: string;
+    backdrop_path: string;
+  };
 }
