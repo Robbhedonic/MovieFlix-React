@@ -1,0 +1,146 @@
+.navbarHeader {
+  position: sticky;
+  z-index: 1;
+  top: 0;
+  opacity: 0.9;
+  background: #000;
+  box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.7);
+}
+
+.navbar {
+  padding: 0.5rem 1rem;
+}
+
+.navbar ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar ul {
+  list-style: none;
+}
+
+.navbar a {
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+.navbar ul li.logo {
+  font-size: 1.3rem;
+  color: var(--primary-color);
+}
+
+.navbar ul li.toggle {
+  order: 1;
+}
+
+.navbar ul li.menuItem {
+  display: none;
+  width: 100%;
+  text-align: center;
+  order: 2;
+}
+
+.navbar ul li a {
+  display: block;
+  padding: 0.4rem 0.4rem;
+  color: var(--text-color);
+}
+
+.navbar ul li a:hover,
+.navbar ul li a.active {
+  color: var(--primary-color);
+}
+
+.navbar ul:has(li .menuBtn:checked) .menuItem {
+  display: block;
+}
+
+/* Draw the hamburger menu */
+.navbar ul li .menuBtn {
+  display: none;
+}
+
+.navbar ul li .menuIcon {
+  padding: 28px 20px;
+  cursor: pointer;
+}
+
+.navbar ul li .menuIcon .navIcon {
+  background-color: var(--text-color);
+  display: block;
+  height: 2px;
+  width: 18px;
+  position: relative;
+  transition: background-color 0.2s ease-out;
+}
+
+.navbar ul li .menuIcon .navIcon:before,
+nav ul li .menuIcon .navIcon:after {
+  background-color: var(--text-color);
+  content: '';
+  display: block;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  transition: all 0.2s ease-out;
+}
+
+.navbar ul .menuIcon .navIcon:before {
+  top: -5px;
+}
+
+.navbar ul li .menuIcon .navIcon:after {
+  top: 5px;
+}
+
+/* Animate the hamburger menu */
+.navbar ul li .menuBtn:checked ~ .menuIcon .navIcon {
+  background: transparent;
+}
+
+.navbar ul li .menuBtn:checked ~ .menuIcon .navIcon::before {
+  transform: rotate(-45deg);
+  top: 0;
+}
+
+.navbar ul li .menuBtn:checked ~ .menuIcon .navIcon::after {
+  transform: rotate(45deg);
+  top: 0;
+}
+
+/* MEDIA QUERIES */
+@media (min-width: 768px) {
+  .navbar ul {
+    align-items: center;
+    flex-wrap: nowrap;
+  }
+
+  .navbar ul li.menuItem {
+    display: block;
+    width: auto;
+  }
+
+  .navbar ul li.logo {
+    font-size: 1.5rem;
+    flex: 1;
+  }
+
+  .navbar ul li.toggle {
+    display: none;
+  }
+
+  .navbar ul li.languageSelector {
+    margin-left: auto;
+  }
+
+  .navbar ul li.languageSelector select {
+    background: #333;
+    color: var(--text-color);
+    border: 1px solid var(--primary-color);
+    padding: 0.4rem;
+    border-radius: 4px;
+  }
+}
