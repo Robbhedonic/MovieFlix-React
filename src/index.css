@@ -171,12 +171,7 @@ body {
   flex-shrink: 0;
 }
 
-.filters-page-title {
-  margin: 0 0 24px;
-  font-size: 3rem;
-  font-weight: 800;
-  color: #111;
-}
+
 
 .filter-card {
   background: #fff;
@@ -198,37 +193,7 @@ body {
   gap: 16px;
 }
 
-.card-header-row h2 {
-  margin: 0;
-  font-size: 1.7rem;
-  font-weight: 700;
-  color: #111;
-}
-
-.arrow {
-  font-size: 2.5rem;
-  line-height: 1;
-  color: #111;
-}
-
-.watch-badge-row {
-  display: flex;
-  align-items: center;
-  gap: 18px;
-}
-
-.watch-count {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 56px;
-  height: 46px;
-  padding: 0 16px;
-  background: #efefef;
-  border-radius: 14px;
-  font-size: 1.1rem;
-  color: #333;
-}
+/* FiltersAside component styles moved to FiltersAside.module.css */
 
 .filter-toggle {
   width: 100%;

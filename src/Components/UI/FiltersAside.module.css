@@ -1,0 +1,147 @@
+.filtersPanel {
+  width: 360px;
+  min-height: 100vh;
+  flex-shrink: 0;
+}
+
+.filtersPageTitle {
+  margin: 0 0 24px;
+  font-size: 3rem;
+  font-weight: 800;
+  color: #111;
+}
+
+.filterCard {
+  background: #fff;
+  border: 1px solid #d8d8d8;
+  border-radius: 18px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  margin-bottom: 22px;
+  overflow: hidden;
+}
+
+.clickableCard {
+  padding: 28px 32px;
+}
+
+.cardHeaderRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.cardHeaderRow h2 {
+  margin: 0;
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: #111;
+}
+
+.watchBadgeRow {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.watchCount {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 56px;
+  height: 46px;
+  padding: 0 16px;
+  background: #efefef;
+  border-radius: 14px;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.arrow {
+  font-size: 2.5rem;
+  line-height: 1;
+  color: #111;
+}
+
+.filterToggle {
+  width: 100%;
+  padding: 28px 32px;
+  background: #fff;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #111;
+  transition: background 0.2s;
+}
+
+.filterToggle:hover {
+  background: #f9f9f9;
+}
+
+.chevron {
+  display: inline-block;
+  transition: transform 0.3s;
+  font-size: 1.5rem;
+}
+
+.chevron.open {
+  transform: rotate(180deg);
+}
+
+.filterSections {
+  padding: 28px 32px;
+  background: #f9f9f9;
+}
+
+.filterSection {
+  margin-bottom: 24px;
+}
+
+.filterSection h3 {
+  margin: 0 0 16px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #111;
+}
+
+.radioOption,
+.checkboxOption {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.radioOption input,
+.checkboxOption input {
+  display: none;
+}
+
+.customRadio,
+.customCheckbox {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #d8d8d8;
+  border-radius: 50%;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+
+.customCheckbox {
+  border-radius: 4px;
+}
+
+.radioOption input:checked ~ .customRadio,
+.checkboxOption input:checked ~ .customCheckbox {
+  background: #ff1744;
+  border-color: #ff1744;
+}
