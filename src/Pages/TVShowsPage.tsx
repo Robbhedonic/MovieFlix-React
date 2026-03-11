@@ -11,6 +11,16 @@ const TARGET_ROWS = 15;
 const INITIAL_BATCH_PAGES = Math.ceil((DESKTOP_ITEMS_PER_ROW * TARGET_ROWS) / SHOWS_PER_API_PAGE);
 const LOAD_MORE_BATCH_PAGES = 2;
 
+const dedupeShowsById = (shows: IShow[]) => {
+  const uniqueShows = new Map<number, IShow>();
+
+  shows.forEach((show) => {
+    uniqueShows.set(show.id, show);
+  });
+
+  return Array.from(uniqueShows.values());
+};
+
 export const TVShowsPage = () => {
   const { language, t } = useLanguage();
   const [shows, setShows] = useState<IShow[]>([]);
@@ -46,12 +56,12 @@ export const TVShowsPage = () => {
       const showPages = await Promise.all(
         pages.map((pageToLoad) => LoadShows(endpoint, pageToLoad, language))
       );
-      const newShows = showPages.flat();
+      const newShows = dedupeShowsById(showPages.flat());
 
       if (currentPage === 1) {
         setShows(newShows);
       } else {
-        setShows((prev) => [...prev, ...newShows]);
+        setShows((prev) => dedupeShowsById([...prev, ...newShows]));
       }
 
       setLoading(false);

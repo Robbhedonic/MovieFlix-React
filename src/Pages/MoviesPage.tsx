@@ -11,6 +11,16 @@ const TARGET_ROWS = 15;
 const INITIAL_BATCH_PAGES = Math.ceil((DESKTOP_ITEMS_PER_ROW * TARGET_ROWS) / MOVIES_PER_API_PAGE);
 const LOAD_MORE_BATCH_PAGES = 2;
 
+const dedupeMoviesById = (movies: IMovie[]) => {
+  const uniqueMovies = new Map<number, IMovie>();
+
+  movies.forEach((movie) => {
+    uniqueMovies.set(movie.id, movie);
+  });
+
+  return Array.from(uniqueMovies.values());
+};
+
 
 export const MoviesPage = () => {
   const { language, t } = useLanguage();
@@ -48,12 +58,12 @@ export const MoviesPage = () => {
       const moviePages = await Promise.all(
         pages.map((pageToLoad) => LoadMovies(endpoint, pageToLoad, language))
       );
-      const newMovies = moviePages.flat();
+      const newMovies = dedupeMoviesById(moviePages.flat());
 
       if (currentPage === 1) {
         setMovies(newMovies);
       } else {
-        setMovies((prev: IMovie[]) => [...prev, ...newMovies]);
+        setMovies((prev: IMovie[]) => dedupeMoviesById([...prev, ...newMovies]));
       }
 
       setLoading(false);
