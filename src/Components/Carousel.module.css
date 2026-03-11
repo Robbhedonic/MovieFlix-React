@@ -1,0 +1,107 @@
+.carouselContainer {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 2rem 0;
+}
+
+.carousel {
+  display: flex;
+  gap: 1.25rem;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  flex: 1;
+  scroll-padding: 0 1rem;
+  padding: 0.5rem 0;
+}
+
+.carouselItem {
+  flex: 0 0 200px;
+  min-width: 200px;
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.carouselItem:hover {
+  transform: scale(1.05);
+}
+
+.carouselItem img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.cardBody {
+  padding: 0.7rem;
+  font-size: 0.95rem;
+}
+
+.cardBody h5 {
+  margin: 0 0 0.5rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.textMuted {
+  opacity: 0.6;
+  font-size: 0.85rem;
+}
+
+.loadingIndicator {
+  position: absolute;
+  bottom: -2rem;
+  right: 1rem;
+  font-size: 0.9rem;
+  color: var(--text-color);
+  opacity: 0.7;
+}
+
+@media (max-width: 768px) {
+  .carouselContainer {
+    padding: 1rem 0;
+    gap: 0.5rem;
+  }
+
+  .carouselItem {
+    flex: 0 0 150px;
+    min-width: 150px;
+  }
+
+  .carousel {
+    gap: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .carouselContainer {
+    padding: 1rem 0;
+    gap: 0.25rem;
+  }
+
+  .carouselItem {
+    flex: 0 0 120px;
+    min-width: 120px;
+  }
+
+  .cardBody {
+    padding: 0.5rem;
+  }
+
+  .cardBody h5 {
+    font-size: 0.85rem;
+  }
+
+  .textMuted {
+    font-size: 0.75rem;
+  }
+}
