@@ -116,16 +116,24 @@ nav ul li .menuIcon .navIcon:after {
   .navbar ul {
     align-items: center;
     flex-wrap: nowrap;
+    justify-content: center;
+    position: relative;
+    min-height: 52px;
+    gap: 0.75rem;
   }
 
   .navbar ul li.menuItem {
     display: block;
     width: auto;
+    order: 1;
   }
 
   .navbar ul li.logo {
     font-size: 1.5rem;
-    flex: 1;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
   }
 
   .navbar ul li.toggle {
@@ -133,14 +141,19 @@ nav ul li .menuIcon .navIcon:after {
   }
 
   .navbar ul li.languageSelector {
-    margin-left: auto;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
   }
 
   .navbar ul li.languageSelector select {
     background: #000;
     color: var(--text-color);
     border: 1px solid var(--primary-color);
-    padding: 0.2rem;
+    padding: 0.35rem 0.45rem;
     border-radius: 4px;
+    font-size: 0.85rem;
+    max-width: 190px;
   }
 }

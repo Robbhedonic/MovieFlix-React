@@ -47,7 +47,7 @@ export const HomePage = () => {
     }
 
     const rect = bgAnimation.getBoundingClientRect();
-    const columns = 40;
+    const columns = window.innerWidth <= 768 ? 24 : 40;
     const rows = Math.ceil(colorBoxes.length / columns);
     const boxWidth = rect.width / columns;
     const boxHeight = rect.height / rows;
@@ -101,8 +101,8 @@ export const HomePage = () => {
 
       <h1 className='page-title'>MovieFlix</h1>
       
-      <div className='home-content' style={{ padding: '0 2rem' }}>
-        <h2 style={{ fontSize: '1.5rem', marginBottom: '1rem', color: '#f4f4f4' }}>
+      <div className='home-content home-section-padding'>
+        <h2 className='home-section-title'>
           Trending Movies
         </h2>
         <Carousel 
@@ -112,15 +112,15 @@ export const HomePage = () => {
         />
       </div>
 
-      <article className='bread-text home-content' style={{ backgroundColor: 'rgba(0, 0, 0, 0.7)', padding: '2.5rem', borderRadius: '15px', backdropFilter: 'blur(5px)' }}>
-        <h2 style={{ fontSize: '2rem', marginBottom: '0.5rem', color: '#f4f4f4', fontWeight: '700', marginTop: '2rem' }}>
+      <article className='bread-text home-content home-article'>
+        <h2 className='home-heading'>
           Discover Entertainment Without Limits
         </h2>
-        <p style={{ fontSize: '1rem', color: '#b0b0b0', marginBottom: '1.5rem', fontStyle: 'italic' }}>
+        <p className='home-subheading'>
           Your ultimate destination for extraordinary movies and series
         </p>
 
-        <h3 style={{ fontSize: '1.3rem', marginBottom: '0.8rem', color: '#ff1744', fontWeight: '600', marginTop: '1.5rem' }}>
+        <h3 className='home-why-title'>
           Why MovieFlix?
         </h3>
         <p>
@@ -129,40 +129,40 @@ export const HomePage = () => {
           exciting documentaries, and exclusive productions that take you into new and fascinating worlds.
         </p>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem', marginTop: '1.5rem', marginBottom: '1.5rem' }}>
+        <div className='home-features-grid'>
           <div>
-            <h4 style={{ color: '#ff1744', marginBottom: '0.5rem', fontWeight: '600' }}>Diverse Content</h4>
-            <p style={{ fontSize: '0.95rem', lineHeight: '1.6' }}>
+            <h4 className='home-feature-title'>Diverse Content</h4>
+            <p className='home-feature-text'>
               From thrilling action movies and captivating dramas to comedies that make you laugh
               and documentaries that broaden your view of the world.
             </p>
           </div>
           <div>
-            <h4 style={{ color: '#ff1744', marginBottom: '0.5rem', fontWeight: '600' }}>Personalized Recommendations</h4>
-            <p style={{ fontSize: '0.95rem', lineHeight: '1.6' }}>
+            <h4 className='home-feature-title'>Personalized Recommendations</h4>
+            <p className='home-feature-text'>
               Browse by genre, discover recommendations based on your taste,
               and keep up with your favorite series with ease.
             </p>
           </div>
           <div>
-            <h4 style={{ color: '#ff1744', marginBottom: '0.5rem', fontWeight: '600' }}>Latest Technology</h4>
-            <p style={{ fontSize: '0.95rem', lineHeight: '1.6' }}>
+            <h4 className='home-feature-title'>Latest Technology</h4>
+            <p className='home-feature-text'>
               Enjoy a high-quality viewing experience with constant updates
               and a modern, intuitive interface.
             </p>
           </div>
           <div>
-            <h4 style={{ color: '#ff1744', marginBottom: '0.5rem', fontWeight: '600' }}>Exclusive Releases</h4>
-            <p style={{ fontSize: '0.95rem', lineHeight: '1.6' }}>
+            <h4 className='home-feature-title'>Exclusive Releases</h4>
+            <p className='home-feature-text'>
               Get access to premieres and exclusive content selected especially for you.
               Be the first to watch the latest in film and television.
             </p>
           </div>
         </div>
 
-        <p style={{ marginTop: '1.5rem', fontSize: '1rem', lineHeight: '1.8', color: '#f4f4f4' }}>
+        <p className='home-cta'>
           With MovieFlix, quality entertainment is always within reach.
-          <strong style={{ color: '#ff1744' }}> Start your cinematic journey today!</strong>
+          <strong> Start your cinematic journey today!</strong>
         </p>
       </article>
     </section>

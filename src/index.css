@@ -59,6 +59,76 @@ main {
   z-index: 1;
 }
 
+.home-section-padding {
+  padding: 0 2rem;
+}
+
+.home-section-title {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #f4f4f4;
+}
+
+.home-article {
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 2.5rem;
+  border-radius: 15px;
+  backdrop-filter: blur(5px);
+}
+
+.home-heading {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  color: #f4f4f4;
+  font-weight: 700;
+  margin-top: 2rem;
+}
+
+.home-subheading {
+  font-size: 1rem;
+  color: #b0b0b0;
+  margin-bottom: 1.5rem;
+  font-style: italic;
+}
+
+.home-why-title {
+  font-size: 1.3rem;
+  margin-bottom: 0.8rem;
+  color: #ff1744;
+  font-weight: 600;
+  margin-top: 1.5rem;
+}
+
+.home-features-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.home-feature-title {
+  color: #ff1744;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.home-feature-text {
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.home-cta {
+  margin-top: 1.5rem;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #f4f4f4;
+}
+
+.home-cta strong {
+  color: #ff1744;
+}
+
 .bg-animation::before {
   content: '';
   position: absolute;
@@ -221,7 +291,9 @@ body {
 }
 
 .filters-panel {
-  width: 340px;
+  width: clamp(250px, 28vw, 340px);
+  min-width: 250px;
+  max-width: 100%;
   min-height: 100vh;
   flex-shrink: 0;
   position: sticky;
@@ -241,7 +313,7 @@ body {
 }
 
 .clickable-card {
-  padding: 14px 20px;
+  padding: 18px 24px;
 }
 
 .clickable-card:first-of-type {
@@ -340,7 +412,7 @@ body {
   width: 100%;
   border: none;
   background: #fff;
-  padding: 14px 20px;
+  padding: 18px 24px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -364,7 +436,7 @@ body {
 }
 
 .filter-section {
-  padding: 14px 20px;
+  padding: 18px 24px;
   border-top: 1px solid #e8e8e8;
 }
 
@@ -552,4 +624,146 @@ body {
   background: #01b4e4;
   color: white;
   border-color: #01b4e4;
+}
+
+@media (max-width: 1024px) {
+  .movies-page-layout {
+    flex-direction: column;
+    gap: 12px;
+    padding: 12px;
+  }
+
+  .filters-panel {
+    width: 100%;
+    min-height: auto;
+    position: static;
+    padding: 0;
+  }
+
+  .movies-content {
+    width: 100%;
+    padding-top: 8px;
+  }
+
+  .movies-content .page-title {
+    margin-bottom: 1rem;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1000px) {
+  .movies-page-layout {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px;
+  }
+
+  .filters-panel {
+    width: 260px;
+    min-width: 250px;
+    min-height: auto;
+    position: sticky;
+    top: 12px;
+    padding: 6px;
+  }
+
+  .movies-content {
+    width: 100%;
+    padding-top: 8px;
+  }
+}
+
+@media (min-width: 550px) and (max-width: 768px) {
+  .movies-page-layout {
+    max-width: 920px;
+    margin: 0 auto;
+  }
+
+  .filters-panel {
+    max-width: 560px;
+    margin: 0 auto;
+  }
+
+  .movies-content {
+    max-width: 920px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .bg-animation {
+    grid-template-columns: repeat(24, 1fr);
+  }
+
+  .home-section-padding {
+    padding: 0 1rem;
+  }
+
+  .home-article {
+    padding: 1.25rem;
+    border-radius: 12px;
+  }
+
+  .home-heading {
+    font-size: 1.45rem;
+    margin-top: 0.4rem;
+  }
+
+  .home-subheading {
+    font-size: 0.9rem;
+  }
+
+  .home-why-title {
+    font-size: 1.1rem;
+  }
+
+  .home-features-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .home-feature-text,
+  .home-cta {
+    font-size: 0.92rem;
+    line-height: 1.55;
+  }
+
+  .bread-text {
+    padding: 0 1rem;
+  }
+
+  .clickable-card,
+  .filter-toggle,
+  .filter-section {
+    padding: 14px 16px;
+  }
+
+  .sort-actions {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .sort-button {
+    min-height: 40px;
+    font-size: 0.85rem;
+  }
+
+  .load-more-button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-heading {
+    font-size: 1.25rem;
+  }
+
+  .home-section-title {
+    font-size: 1.2rem;
+  }
+
+  .movies-page-layout {
+    padding: 10px;
+  }
 }
