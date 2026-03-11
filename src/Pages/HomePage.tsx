@@ -9,7 +9,7 @@ export const HomePage = () => {
   const [movies, setMovies] = useState<IMovie[]>([]);
   const [page, setPage] = useState<number>(1);
   const [loading, setLoading] = useState<boolean>(false);
-  const colorBoxes = Array.from({ length: 10000 });
+  const colorBoxes = Array.from({ length: 8000 });
   const bgAnimationRef = useRef<HTMLDivElement>(null);
   const activeTimeoutsRef = useRef<Map<number, number>>(new Map());
 

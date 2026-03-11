@@ -25,11 +25,27 @@ const genres = [
 type FiltersAsideProps = {
   selectedGenres: number[];
   setSelectedGenres: React.Dispatch<React.SetStateAction<number[]>>;
+  sortOrder: 'title-az' | 'title-za' | 'date-desc' | 'date-asc';
+  setSortOrder: React.Dispatch<React.SetStateAction<'title-az' | 'title-za' | 'date-desc' | 'date-asc'>>;
+  searchAllReleases: boolean;
+  setSearchAllReleases: React.Dispatch<React.SetStateAction<boolean>>;
+  releaseDateFrom: string;
+  setReleaseDateFrom: React.Dispatch<React.SetStateAction<string>>;
+  releaseDateTo: string;
+  setReleaseDateTo: React.Dispatch<React.SetStateAction<string>>;
 };
 
 const FiltersAside = ({
   selectedGenres,
   setSelectedGenres,
+  sortOrder,
+  setSortOrder,
+  searchAllReleases,
+  setSearchAllReleases,
+  releaseDateFrom,
+  setReleaseDateFrom,
+  releaseDateTo,
+  setReleaseDateTo,
 }: FiltersAsideProps) => {
   const [showFilters, setShowFilters] = useState(true);
 
@@ -41,12 +57,41 @@ const FiltersAside = ({
 
   return (
     <aside className="filters-panel">
-      <h1 className="filters-page-title">Popular Movies</h1>
-
       <section className="filter-card clickable-card">
-        <div className="card-header-row">
-          <h2>Sort</h2>
-          <span className="arrow">›</span>
+        <div className="sort-card-header">
+          <h2>Sort by Title</h2>
+          <p className="sort-card-subtitle">Choose how the movie list should be ordered.</p>
+        </div>
+
+        <div className="sort-actions">
+          <button
+            type="button"
+            className={`sort-button ${sortOrder === 'title-az' ? 'active' : ''}`}
+            onClick={() => setSortOrder('title-az')}
+          >
+            Title A-Z
+          </button>
+          <button
+            type="button"
+            className={`sort-button ${sortOrder === 'title-za' ? 'active' : ''}`}
+            onClick={() => setSortOrder('title-za')}
+          >
+            Title Z-A
+          </button>
+          <button
+            type="button"
+            className={`sort-button ${sortOrder === 'date-desc' ? 'active' : ''}`}
+            onClick={() => setSortOrder('date-desc')}
+          >
+            Newest-Oldest
+          </button>
+          <button
+            type="button"
+            className={`sort-button ${sortOrder === 'date-asc' ? 'active' : ''}`}
+            onClick={() => setSortOrder('date-asc')}
+          >
+            Oldest-Newest
+          </button>
         </div>
       </section>
 
@@ -108,7 +153,11 @@ const FiltersAside = ({
               <h3>Release Dates</h3>
 
               <label className="checkbox-option">
-                <input type="checkbox" defaultChecked />
+                <input
+                  type="checkbox"
+                  checked={searchAllReleases}
+                  onChange={(event) => setSearchAllReleases(event.target.checked)}
+                />
                 <span className="custom-checkbox"></span>
                 <span>Search all releases?</span>
               </label>
@@ -116,16 +165,26 @@ const FiltersAside = ({
               <div className="date-group">
                 <label htmlFor="from">from</label>
                 <div className="date-input-wrapper">
-                  <input id="from" type="text" placeholder="undefined" />
-                  <span className="date-icon">🗓️</span>
+                  <input
+                    id="from"
+                    type="date"
+                    value={releaseDateFrom}
+                    onChange={(event) => setReleaseDateFrom(event.target.value)}
+                    disabled={searchAllReleases}
+                  />
                 </div>
               </div>
 
               <div className="date-group">
                 <label htmlFor="to">to</label>
                 <div className="date-input-wrapper">
-                  <input id="to" type="text" placeholder="undefined" />
-                  <span className="date-icon">🗓️</span>
+                  <input
+                    id="to"
+                    type="date"
+                    value={releaseDateTo}
+                    onChange={(event) => setReleaseDateTo(event.target.value)}
+                    disabled={searchAllReleases}
+                  />
                 </div>
               </div>
             </div>
