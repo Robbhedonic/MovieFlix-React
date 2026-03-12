@@ -25,6 +25,8 @@ const genres = [
 type FiltersAsideProps = {
   selectedGenres: number[];
   setSelectedGenres: React.Dispatch<React.SetStateAction<number[]>>;
+  searchQuery: string;
+  setSearchQuery: React.Dispatch<React.SetStateAction<string>>;
   sortOrder: 'title-az' | 'title-za' | 'date-desc' | 'date-asc';
   setSortOrder: React.Dispatch<React.SetStateAction<'title-az' | 'title-za' | 'date-desc' | 'date-asc'>>;
   searchAllReleases: boolean;
@@ -38,6 +40,8 @@ type FiltersAsideProps = {
 const FiltersAside = ({
   selectedGenres,
   setSelectedGenres,
+  searchQuery,
+  setSearchQuery,
   sortOrder,
   setSortOrder,
   searchAllReleases,
@@ -57,6 +61,21 @@ const FiltersAside = ({
 
   return (
     <aside className="filters-panel">
+      <section className="filter-card clickable-card">
+        <div className="search-card-header">
+          <h2>Search</h2>
+          <p className="sort-card-subtitle">Find a movie or show by title.</p>
+        </div>
+
+        <input
+          type="text"
+          className="search-input"
+          placeholder="Search title..."
+          value={searchQuery}
+          onChange={(event) => setSearchQuery(event.target.value)}
+        />
+      </section>
+
       <section className="filter-card clickable-card">
         <div className="sort-card-header">
           <h2>Sort by Title</h2>

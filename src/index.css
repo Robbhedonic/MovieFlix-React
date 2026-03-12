@@ -341,6 +341,30 @@ body {
   color: #111;
 }
 
+.search-card-header h2 {
+  margin: 0 0 6px;
+  font-size: 1.12rem;
+  font-weight: 700;
+  color: #111;
+}
+
+.search-input {
+  width: 100%;
+  border: 1px solid #cfcfcf;
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: 0.95rem;
+  color: #111;
+  background: #fff;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.search-input:focus {
+  border-color: #01b4e4;
+  box-shadow: 0 0 0 3px rgba(1, 180, 228, 0.18);
+}
+
 .sort-card-subtitle {
   margin: 0 0 10px;
   font-size: 0.94rem;

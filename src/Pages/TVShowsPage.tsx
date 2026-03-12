@@ -27,6 +27,7 @@ export const TVShowsPage = () => {
   const [page, setPage] = useState<number>(1);
   const [loading, setLoading] = useState<boolean>(false);
   const [selectedGenres, setSelectedGenres] = useState<number[]>([]);
+  const [searchQuery, setSearchQuery] = useState('');
   const [sortOrder, setSortOrder] = useState<'title-az' | 'title-za' | 'date-desc' | 'date-asc'>('title-az');
   const [searchAllReleases, setSearchAllReleases] = useState(true);
   const [releaseDateFrom, setReleaseDateFrom] = useState('');
@@ -100,11 +101,22 @@ export const TVShowsPage = () => {
     }
   });
 
+  const normalizedQuery = searchQuery.trim().toLowerCase();
+  const filteredShows = sortedShows.filter((show) => {
+    if (!normalizedQuery) {
+      return true;
+    }
+
+    return (show.name ?? '').toLowerCase().includes(normalizedQuery);
+  });
+
   return (
     <div className="movies-page-layout">
       <FiltersAside
         selectedGenres={selectedGenres}
         setSelectedGenres={setSelectedGenres}
+        searchQuery={searchQuery}
+        setSearchQuery={setSearchQuery}
         sortOrder={sortOrder}
         setSortOrder={setSortOrder}
         searchAllReleases={searchAllReleases}
@@ -117,7 +129,7 @@ export const TVShowsPage = () => {
 
       <main className="movies-content">
         <h1 className='page-title'>{t('popularShows')}</h1>
-        <ItemsList items={sortedShows} />
+        <ItemsList items={filteredShows} />
 
         <button className="load-more-button" onClick={loadMoreShows} disabled={loading}>
           {loading ? t('loading') : t('loadMoreShows')}
