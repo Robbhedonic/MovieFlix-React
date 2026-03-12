@@ -208,6 +208,61 @@ main {
   font-size: 1.25rem;
 }
 
+.card-meta-row {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.card-meta-text {
+  min-width: 0;
+}
+
+.card-meta-text h5 {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.2;
+}
+
+.card-meta-text .text-muted {
+  display: block;
+  margin-top: 0.2rem;
+  font-size: 0.82rem;
+}
+
+.rating-badge {
+  --score: 0%;
+  --ring-color: #ff4c4c;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0;
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: #fff;
+  background:
+    radial-gradient(circle, #000 62%, transparent 63%),
+    conic-gradient(var(--ring-color) var(--score), rgba(255, 255, 255, 0.2) 0);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.28);
+  letter-spacing: 0.01em;
+  flex-shrink: 0;
+}
+
+.rating-low {
+  --ring-color: #ff4c4c;
+}
+
+.rating-mid {
+  --ring-color: #ffd24d;
+}
+
+.rating-high {
+  --ring-color: #26cc6b;
+}
+
 .card:hover {
   transform: scale(1.05);
   background: #2f2da3;
