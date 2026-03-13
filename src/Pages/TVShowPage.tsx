@@ -2,21 +2,41 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { FindShow } from '../Utilities/FindShow';
 import { IShow } from '../Models/IShow';
+import { IReview } from '../Models/IReview';
+import { LoadReviews } from '../Utilities/LoadReviews';
 
 export const TVShowPage = () => {
   const [show, setShow] = useState<IShow>();
   const [backgroundImage, setBackgroundImage] = useState<string>('');
   const [poster, setPoster] = useState<string>('');
+  const [reviews, setReviews] = useState<IReview[]>([]);
+  const [expandedReviews, setExpandedReviews] = useState<Record<string, boolean>>({});
   const { id } = useParams();
 
+  const toggleReview = (reviewId: string) => {
+    setExpandedReviews((prev) => ({
+      ...prev,
+      [reviewId]: !prev[reviewId],
+    }));
+  };
+
   useEffect(() => {
+    if (!id) {
+      return;
+    }
+
     const getShow = async () => {
-      const found = await FindShow(`tv/${id}`);
+      const [found, showReviews] = await Promise.all([
+        FindShow(`tv/${id}`),
+        LoadReviews('tv', id),
+      ]);
+
       setBackgroundImage(
         `https://image.tmdb.org/t/p/original/${found.backdrop_path}`
       );
       setPoster(`https://image.tmdb.org/t/p/w500${found.poster_path}`);
       setShow(found);
+      setReviews(showReviews);
     };
     getShow();
   }, [id]);
@@ -37,6 +57,29 @@ export const TVShowPage = () => {
           </p>
           <p className='text-muted'>Premiär: {show?.first_air_date}</p>
           <p>{show?.overview}</p>
+
+          <section className='reviews-section'>
+            <h3>Reviews</h3>
+            {reviews.length === 0 && <p className='text-muted'>No reviews available.</p>}
+            {reviews.slice(0, 3).map((review) => (
+              <article key={review.id} className='review-card'>
+                <p className='review-author'>{review.author}</p>
+                <p className={`review-content ${expandedReviews[review.id] ? 'expanded' : ''}`}>
+                  {review.content}
+                </p>
+                <button
+                  type='button'
+                  className='review-toggle'
+                  onClick={() => toggleReview(review.id)}
+                >
+                  {expandedReviews[review.id] ? 'Ver menos' : 'Ver más'}
+                </button>
+                <a className='review-link' href={review.url} target='_blank' rel='noreferrer'>
+                  Read full review
+                </a>
+              </article>
+            ))}
+          </section>
         </div>
       </section>
     </>

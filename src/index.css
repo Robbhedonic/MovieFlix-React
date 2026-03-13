@@ -312,6 +312,79 @@ main {
   color: var(--secondary-color);
 }
 
+.details-info {
+  width: min(100%, 760px);
+}
+
+.reviews-section {
+  margin-top: 1.4rem;
+  display: grid;
+  gap: 0.8rem;
+}
+
+.reviews-section h3 {
+  margin: 0 0 0.2rem;
+  font-size: 1.2rem;
+}
+
+.review-card {
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  padding: 0.85rem;
+}
+
+.review-author {
+  margin: 0 0 0.45rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.review-content {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.45;
+  line-clamp: 5;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.review-content.expanded {
+  line-clamp: unset;
+  display: block;
+  -webkit-line-clamp: unset;
+  -webkit-box-orient: unset;
+  overflow: visible;
+}
+
+.review-toggle {
+  margin-top: 0.55rem;
+  border: none;
+  background: transparent;
+  color: #ffd24d;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 0;
+}
+
+.review-toggle:hover {
+  text-decoration: underline;
+}
+
+.review-link {
+  display: inline-block;
+  margin-top: 0.55rem;
+  color: #01b4e4;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.review-link:hover {
+  text-decoration: underline;
+}
+
 @media (min-width: 768px) {
   .page-title {
     font-size: 3rem;
