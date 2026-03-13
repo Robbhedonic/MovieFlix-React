@@ -316,6 +316,57 @@ main {
   width: min(100%, 760px);
 }
 
+.credits-section {
+  margin-top: 1.4rem;
+}
+
+.credits-section h3 {
+  margin: 0 0 0.65rem;
+  font-size: 1.2rem;
+}
+
+.credits-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 0.75rem;
+}
+
+.credit-card {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  padding: 0.55rem;
+}
+
+.credit-photo {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  border-radius: 8px;
+  object-fit: cover;
+  background: #0f0f0f;
+}
+
+.credit-photo.placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.8rem;
+}
+
+.credit-name {
+  margin: 0.45rem 0 0.2rem;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.credit-role {
+  margin: 0;
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.72);
+}
+
 .reviews-section {
   margin-top: 1.4rem;
   display: grid;

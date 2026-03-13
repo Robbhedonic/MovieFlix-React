@@ -6,6 +6,8 @@ import { IMovie } from '../Models/IMovie';
 import { IReview } from '../Models/IReview';
 import { useLanguage } from '../Contexts/LanguageContext';
 import { LoadReviews } from '../Utilities/LoadReviews';
+import { ICastMember, ICrewMember } from '../Models/ICredits';
+import { LoadCredits } from '../Utilities/LoadCredits';
 
 export const MoviePage = () => {
   const [movie, setMovie] = useState<IMovie>();
@@ -13,6 +15,8 @@ export const MoviePage = () => {
   const [poster, setPoster] = useState<string>('');
   const [translations, setTranslations] = useState<ITranslation[]>([]);
   const [reviews, setReviews] = useState<IReview[]>([]);
+  const [cast, setCast] = useState<ICastMember[]>([]);
+  const [crew, setCrew] = useState<ICrewMember[]>([]);
   const [expandedReviews, setExpandedReviews] = useState<Record<string, boolean>>({});
   const { id } = useParams();
   const { t } = useLanguage();
@@ -30,9 +34,10 @@ export const MoviePage = () => {
     }
 
     const getMovie = async () => {
-      const [found, movieReviews] = await Promise.all([
+      const [found, movieReviews, movieCredits] = await Promise.all([
         FindMovie(`movie/${id}`),
         LoadReviews('movie', id),
+        LoadCredits('movie', id),
       ]);
 
       setBackgroundImage(
@@ -41,6 +46,8 @@ export const MoviePage = () => {
       setPoster(`https://image.tmdb.org/t/p/w500${found.poster_path}`);
       setMovie(found);
       setReviews(movieReviews);
+      setCast(movieCredits.cast);
+      setCrew(movieCredits.crew);
 
       if (found.belongs_to_collection) {
         const trans = await FindCollectionTranslations(found.belongs_to_collection.id);
@@ -83,6 +90,48 @@ export const MoviePage = () => {
               )}
             </div>
           )}
+
+          <section className='credits-section'>
+            <h3>Cast</h3>
+            <div className='credits-grid'>
+              {cast.slice(0, 12).map((person) => (
+                <article key={`cast-${person.id}-${person.order}`} className='credit-card'>
+                  {person.profile_path ? (
+                    <img
+                      className='credit-photo'
+                      src={`https://image.tmdb.org/t/p/w185${person.profile_path}`}
+                      alt={person.name}
+                    />
+                  ) : (
+                    <div className='credit-photo placeholder'>No photo</div>
+                  )}
+                  <p className='credit-name'>{person.name}</p>
+                  <p className='credit-role'>{person.character}</p>
+                </article>
+              ))}
+            </div>
+          </section>
+
+          <section className='credits-section'>
+            <h3>Crew</h3>
+            <div className='credits-grid'>
+              {crew.slice(0, 12).map((person, index) => (
+                <article key={`crew-${person.id}-${index}`} className='credit-card'>
+                  {person.profile_path ? (
+                    <img
+                      className='credit-photo'
+                      src={`https://image.tmdb.org/t/p/w185${person.profile_path}`}
+                      alt={person.name}
+                    />
+                  ) : (
+                    <div className='credit-photo placeholder'>No photo</div>
+                  )}
+                  <p className='credit-name'>{person.name}</p>
+                  <p className='credit-role'>{person.job}</p>
+                </article>
+              ))}
+            </div>
+          </section>
 
           <section className='reviews-section'>
             <h3>Reviews</h3>
