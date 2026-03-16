@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import styles from './navbar.module.css';
 import { useLanguage } from '../../Contexts/LanguageContext';
 
@@ -7,6 +7,8 @@ const activeClass = ({ isActive }: NavbarProps) =>
 
 const Navbar = () => {
   const { language, setLanguage, t } = useLanguage();
+  const location = useLocation();
+  const isAwardsActive = location.pathname.startsWith('/awards');
 
   return (
     <>
@@ -34,6 +36,23 @@ const Navbar = () => {
               <NavLink className={activeClass} to='/shows'>
                 {t('tvShows')}
               </NavLink>
+            </li>
+            <li className={`${styles.menuItem} ${styles.dropdown}`}>
+              <span className={`${styles.dropdownTrigger} ${isAwardsActive ? styles.active : ''}`}>
+                {t('awards')} ▾
+              </span>
+              <ul className={styles.dropdownMenu}>
+                <li>
+                  <NavLink className={activeClass} to='/awards/popular'>
+                    {t('awardsPopular')}
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink className={activeClass} to='/awards/upcoming'>
+                    {t('awardsUpcoming')}
+                  </NavLink>
+                </li>
+              </ul>
             </li>
             <li className={styles.languageSelector}>
               <select value={language} onChange={(e) => setLanguage(e.target.value)}>

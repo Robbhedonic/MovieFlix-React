@@ -43,6 +43,14 @@
   order: 2;
 }
 
+.navbar ul li.menuItem.dropdown {
+  display: block !important;
+  width: auto !important;
+  text-align: left;
+  padding: 0.5rem 1rem;
+  position: static;
+}
+
 .navbar ul li a {
   display: block;
   padding: 0.4rem 0.4rem;
@@ -54,8 +62,67 @@
   color: var(--primary-color);
 }
 
+/* Awards dropdown styles */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdownTrigger {
+  display: block;
+  padding: 0.6rem 0;
+  color: var(--text-color);
+  cursor: pointer;
+  user-select: none;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.dropdownTrigger:hover {
+  color: var(--primary-color);
+}
+
+.dropdownTrigger.active {
+  color: var(--primary-color);
+}
+
+.dropdownMenu {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  display: none !important;
+}
+
+.dropdownMenu li {
+  padding: 0 !important;
+}
+
+.dropdownMenu li a {
+  display: block;
+  padding: 0.6rem 0;
+  color: var(--text-color);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
+
+.dropdownMenu li a:hover,
+.dropdownMenu li a.active {
+  color: var(--primary-color);
+  padding-left: 0.5rem;
+}
+
 .navbar ul:has(li .menuBtn:checked) .menuItem {
   display: block;
+}
+
+.navbar ul:has(li .menuBtn:checked) .menuItem.dropdown {
+  display: block !important;
+}
+
+.navbar ul:has(li .menuBtn:checked) .dropdown .dropdownMenu {
+  display: flex !important;
+  flex-direction: column;
 }
 
 /* Draw the hamburger menu */
@@ -113,6 +180,75 @@ nav ul li .menuIcon .navIcon:after {
 
 /* MEDIA QUERIES */
 @media (min-width: 768px) {
+    .dropdown {
+      width: auto !important;
+      position: relative;
+    }
+
+    .dropdownTrigger {
+      border: none;
+      background: transparent;
+      padding: 0.4rem 0.4rem;
+      font-weight: 400;
+    }
+
+    .dropdownTrigger:hover {
+      background: transparent;
+    }
+
+    .dropdownTrigger.active {
+      background: transparent;
+      border-color: transparent;
+    }
+
+    /* Desktop dropdown: absolutely positioned, no flow impact */
+    .dropdownMenu {
+      display: none !important;
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, rgba(30, 30, 30, 0.98) 0%, rgba(20, 20, 20, 0.98) 100%);
+      border: 2px solid var(--primary-color);
+      border-radius: 8px;
+      padding: 0.8rem 0;
+      min-width: 220px;
+      margin: 0.5rem 0 0 0;
+      z-index: 1000;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.9), 0 0 20px rgba(255, 0, 0, 0.15);
+      animation: slideDown 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      pointer-events: none;
+    }
+
+    .dropdown:hover .dropdownMenu {
+      display: flex !important;
+      flex-direction: column;
+      pointer-events: auto;
+    }
+
+    .dropdownMenu li {
+      border-bottom: 1px solid rgba(255, 0, 0, 0.1);
+      padding: 0;
+    }
+
+    .dropdownMenu li:last-child {
+      border-bottom: none;
+    }
+
+    .dropdownMenu li a {
+      padding: 0.8rem 1.6rem;
+      white-space: nowrap;
+      font-size: 0.95rem;
+    }
+
+    .dropdownMenu li a:hover,
+    .dropdownMenu li a.active {
+      color: var(--primary-color);
+      background: linear-gradient(90deg, rgba(255, 0, 0, 0.25) 0%, rgba(255, 0, 0, 0.08) 100%);
+      padding-left: 2rem;
+      font-weight: 500;
+    }
+
   .navbar ul {
     align-items: center;
     flex-wrap: nowrap;
@@ -126,6 +262,11 @@ nav ul li .menuIcon .navIcon:after {
     display: block;
     width: auto;
     order: 1;
+  }
+
+  .navbar ul li.menuItem.dropdown {
+    display: block !important;
+    width: auto;
   }
 
   .navbar ul li.logo {

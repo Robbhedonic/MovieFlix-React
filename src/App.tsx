@@ -11,6 +11,8 @@ import { MoviesPage } from './Pages/MoviesPage';
 import { TVShowsPage } from './Pages/TVShowsPage';
 import { MoviePage } from './Pages/MoviePage';
 import { TVShowPage } from './Pages/TVShowPage';
+import { AwardsPopularPage } from './Pages/AwardsPopularPage';
+import { AwardsUpcomingPage } from './Pages/AwardsUpcomingPage';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -20,6 +22,8 @@ const router = createBrowserRouter(
       <Route path='/movies/:id' element={<MoviePage />} />
       <Route path='/shows' element={<TVShowsPage />} />
       <Route path='/shows/:id' element={<TVShowPage />} />
+      <Route path='/awards/popular' element={<AwardsPopularPage />} />
+      <Route path='/awards/upcoming' element={<AwardsUpcomingPage />} />
     </Route>
   )
 );
